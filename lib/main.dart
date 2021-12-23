@@ -95,21 +95,61 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            Container(
+                margin: const EdgeInsets.all(10),
+                child: const TextField(
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Username',
+                  ),
+                )),
+            Container(
+                margin: const EdgeInsets.all(10),
+                child: TextField(
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    hintText: "input your password",
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                        color: Colors.red,
+                      ),
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    labelText: 'Password',
+                    hintStyle: const TextStyle(
+                      color: Colors.red,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                )),
+            Container(
+                margin: const EdgeInsets.all(10),
+                child: ElevatedButton(
+                  //
+                  // ElevatedButton example in google.
+                  //
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.blueAccent, // background
+                      onPrimary: Colors.white, // foreground
+                      textStyle: const TextStyle(fontSize: 30)),
+                  onPressed: () {
+                    // function
+                    int x = 10;
+                    x = x + 100;
+                    print("Press button login: x=" + x.toString());
+                    // check username + password.
+                  },
+                  child: Text('LOGIN'),
+                ))
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter,
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.add),
+      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
