@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neo_study/login_screen/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,108 +49,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-                margin: const EdgeInsets.all(10),
-                child: const TextField(
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Username',
-                  ),
-                )),
-            Container(
-                margin: const EdgeInsets.all(10),
-                child: TextField(
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    hintText: "input your password",
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.red,
-                      ),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    labelText: 'Password',
-                    hintStyle: const TextStyle(
-                      color: Colors.red,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                )),
-            Container(
-                margin: const EdgeInsets.all(10),
-                child: ElevatedButton(
-                  //
-                  // ElevatedButton example in google.
-                  //
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.blueAccent, // background
-                      onPrimary: Colors.white, // foreground
-                      textStyle: const TextStyle(fontSize: 30)),
-                  onPressed: () {
-                    // function
-                    int x = 10;
-                    x = x + 100;
-                    print("Press button login: x=" + x.toString());
-                    // check username + password.
-                  },
-                  child: Text('LOGIN 2'),
-                ))
-          ],
-        ),
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
+    return MaterialApp(
+      title: 'Neo Study',
+      initialRoute: LoginScreen.routeName,
+      routes: {
+        LoginScreen.routeName: (context) => const LoginScreen(),
+        //DashboardScreen.routeName: (context) => const DashboardScreen(),
+      },
     );
   }
 }
