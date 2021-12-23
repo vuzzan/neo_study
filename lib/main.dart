@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     print("Press button login: x=" + x.toString());
                     // check username + password.
                   },
-                  child: Text('LOGIN'),
+                  child: Text('LOGIN 2'),
                 ))
           ],
         ),
