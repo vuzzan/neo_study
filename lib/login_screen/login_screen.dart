@@ -33,7 +33,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 margin: const EdgeInsets.all(10),
                 child: TextField(
                   obscureText: false,
+                  style: TextStyle(fontSize: 30.0, color: Colors.blue),
                   decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(25.7),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(25.7),
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
                     hintText: "input your password",
                     border: OutlineInputBorder(
                       borderSide: const BorderSide(
