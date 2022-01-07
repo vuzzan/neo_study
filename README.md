@@ -15,3 +15,20 @@ git add -u :/
 git commit -m "Update descripe..."
 ### 3. Add source code to github:
 git push
+
+# How to get input text from username and password textfield ?
+## Step 1: Define controler
+  // Set controller for username
+  final myControllerUsername = TextEditingController();
+  // Set controller for password
+  final myControllerPassword = TextEditingController();
+  //End of declare
+## Step 2: Link controller to textfield
+    TextField(
+        controller: myControllerPassword,
+
+## Step 3: Get value of textfield
+    onPressed: () {
+        print("Try to get username and password");
+        String username = myControllerUsername.text;
+        print(myControllerUsername.text);

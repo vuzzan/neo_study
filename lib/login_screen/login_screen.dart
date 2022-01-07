@@ -8,6 +8,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  // Set controller for username
+  final myControllerUsername = TextEditingController();
+  // Set controller for password
+  final myControllerPassword = TextEditingController();
+  //End of declare
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,27 +27,33 @@ class _LoginScreenState extends State<LoginScreen> {
           children: <Widget>[
             Container(
                 margin: const EdgeInsets.all(10),
-                child: const TextField(
+                child: TextField(
                   obscureText: false,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Username',
                   ),
+
+                  controller:
+                      myControllerUsername, // 2.Set controller to textfield
+                  // upload to github ...
                 )),
             Container(
                 margin: const EdgeInsets.all(10),
                 child: TextField(
+                  controller: myControllerPassword, // set controller password
                   obscureText: false,
-                  style: TextStyle(fontSize: 30.0, color: Colors.blue),
+
+                  //style: const TextStyle(fontSize: 30.0, color: Colors.blue),
                   decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(25.7),
-                    ),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(25.7),
-                    ),
+                    // focusedBorder: OutlineInputBorder(
+                    //   borderSide: const BorderSide(color: Colors.white),
+                    //   borderRadius: BorderRadius.circular(25.7),
+                    // ),
+                    // enabledBorder: UnderlineInputBorder(
+                    //   borderSide: const BorderSide(color: Colors.white),
+                    //   borderRadius: BorderRadius.circular(25.7),
+                    // ),
                     filled: true,
                     fillColor: Colors.white,
                     hintText: "input your password",
@@ -70,11 +81,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPrimary: Colors.white, // foreground
                       textStyle: const TextStyle(fontSize: 30)),
                   onPressed: () {
-                    // function
-                    int x = 10;
-                    x = x + 100;
-                    print("Press button login: x=" + x.toString());
+                    print("Try to get username and password");
+                    //String username = myControllerUsername.text;
+                    print("Username =" + myControllerUsername.text);
+                    print("Password =[" + myControllerPassword.text + "]");
                     // check username + password.
+                    // your hand: Press Control + S ( Save )
+                    // hot reload: r
                   },
                   child: Text('LOGIN 2'),
                 ))
