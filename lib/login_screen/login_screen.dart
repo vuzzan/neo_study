@@ -12,6 +12,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final myControllerUsername = TextEditingController();
   // Set controller for password
   final myControllerPassword = TextEditingController();
+
+  String resultLogin = "Result text..Neo";
   //End of declare
   @override
   Widget build(BuildContext context) {
@@ -70,6 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 )),
+            Text(resultLogin),
             Container(
                 margin: const EdgeInsets.all(10),
                 child: ElevatedButton(
@@ -81,6 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPrimary: Colors.white, // foreground
                       textStyle: const TextStyle(fontSize: 30)),
                   onPressed: () {
+                    //===> Begin press login
                     print("Try to get username and password");
                     //String username = myControllerUsername.text;
                     print("Username =" + myControllerUsername.text);
@@ -88,8 +92,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     // check username + password.
                     // your hand: Press Control + S ( Save )
                     // hot reload: r
+                    // check business logic ( admin/abc123)
+                    // https://www.tutorialspoint.com/dart_programming/dart_programming_operators.htm
+                    // and: &&
+                    // or: ||
+                    if (myControllerUsername.text == "admin" &&
+                        myControllerPassword.text == "abc123") {
+                      print("Login succesful");
+                      setState(() {
+                        resultLogin = "Login succesful";
+                      });
+                    } else {
+                      // debug
+                      print("Wrong username or password");
+                      setState(() {
+                        resultLogin = "Wrong username or password";
+                      });
+                    }
+
+                    //==> End of login
                   },
-                  child: Text('LOGIN 2'),
+                  child: Text('LOGIN'),
                 ))
           ],
         ),
