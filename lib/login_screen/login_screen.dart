@@ -85,10 +85,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       textStyle: const TextStyle(fontSize: 30)),
                   onPressed: () {
                     //===> Begin press login
-                    print("Try to get username and password");
+                    print("1 Try to get username and password");
                     //String username = myControllerUsername.text;
-                    print("Username =" + myControllerUsername.text);
-                    print("Password =[" + myControllerPassword.text + "]");
+                    print("2Username =" + myControllerUsername.text);
+                    print("3Password =[" + myControllerPassword.text + "]");
                     // check username + password.
                     // your hand: Press Control + S ( Save )
                     // hot reload: r
@@ -96,15 +96,35 @@ class _LoginScreenState extends State<LoginScreen> {
                     // https://www.tutorialspoint.com/dart_programming/dart_programming_operators.htm
                     // and: &&
                     // or: ||
+                    // Check:
+                    // 1. username not empty, at least 5 characters
+
+                    if (myControllerUsername.text.length == 0 ||
+                        myControllerUsername.text.length < 5) {
+                      // condition => true => go to this block
+                      print("4Usename must not empty & >5 chars");
+                      setState(() {
+                        resultLogin = "Usename must not empty & >5 chars";
+                      });
+                      // function end here
+                      print("7 END FUNCTION.");
+                      return;
+                      // end block
+                    } else {
+                      // Continue to step 2
+                    }
+                    // 2. password not empty, at least 5 characters
+
+                    // Step 2:
                     if (myControllerUsername.text == "admin" &&
                         myControllerPassword.text == "abc123") {
-                      print("Login succesful");
+                      print("5Login succesful");
                       setState(() {
                         resultLogin = "Login succesful";
                       });
                     } else {
                       // debug
-                      print("Wrong username or password");
+                      print("6Wrong username or password");
                       setState(() {
                         resultLogin = "Wrong username or password";
                       });
