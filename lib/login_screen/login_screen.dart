@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neo_study/login_screen/dash_board.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -83,56 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       primary: Colors.blueAccent, // background
                       onPrimary: Colors.white, // foreground
                       textStyle: const TextStyle(fontSize: 30)),
-                  onPressed: () {
-                    //===> Begin press login
-                    print("1 Try to get username and password");
-                    //String username = myControllerUsername.text;
-                    print("2Username =" + myControllerUsername.text);
-                    print("3Password =[" + myControllerPassword.text + "]");
-                    // check username + password.
-                    // your hand: Press Control + S ( Save )
-                    // hot reload: r
-                    // check business logic ( admin/abc123)
-                    // https://www.tutorialspoint.com/dart_programming/dart_programming_operators.htm
-                    // and: &&
-                    // or: ||
-                    // Check:
-                    // 1. username not empty, at least 5 characters
-
-                    if (myControllerUsername.text.length == 0 ||
-                        myControllerUsername.text.length < 5) {
-                      // condition => true => go to this block
-                      print("4Usename must not empty & >5 chars");
-                      setState(() {
-                        resultLogin = "Usename must not empty & >5 chars";
-                      });
-                      // function end here
-                      print("7 END FUNCTION.");
-                      return;
-                      // end block
-                    } else {
-                      // Continue to step 2
-                    }
-                    // 2. password not empty, at least 5 characters
-
-                    // Step 2:
-                    if (myControllerUsername.text == "admin" &&
-                        myControllerPassword.text == "abc123") {
-                      print("5Login succesful");
-                      setState(() {
-                        resultLogin = "Login succesful";
-                      });
-                    } else {
-                      // debug
-                      print("6Wrong username or password");
-                      setState(() {
-                        resultLogin = "Wrong username or password";
-                      });
-                    }
-
-                    //==> End of login
-                  },
-                  child: Text('LOGIN'),
+                  onPressed: pressLoginButton,
+                  child: const Text('LOGIN'),
                 ))
           ],
         ),
@@ -143,5 +96,68 @@ class _LoginScreenState extends State<LoginScreen> {
       //   child: const Icon(Icons.add),
       // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  // Move login function to outside
+  void pressLoginButton() {
+    //===> Begin press login
+    print("1 Try to get username and password");
+    //String username = myControllerUsername.text;
+    print("2Username =" + myControllerUsername.text);
+    print("3Password =[" + myControllerPassword.text + "]");
+    // check username + password.
+    // your hand: Press Control + S ( Save )
+    // hot reload: r
+    // check business logic ( admin/abc123)
+    // https://www.tutorialspoint.com/dart_programming/dart_programming_operators.htm
+    // and: &&
+    // or: ||
+    // Check:
+    // 1. check username not empty, at least 5 characters
+    if (myControllerUsername.text.length == 0) {
+      // condition => true => go to this block
+      print("4Usename must not empty & >5 chars");
+      setState(() {
+        resultLogin = "Usename must not empty & >5 chars";
+      });
+      // function end here
+      print("7 END FUNCTION.");
+      return;
+      // end block
+    } else {
+      // Continue to step 2
+    }
+    // 2. Check password not empty, at least 5 characters
+    if (myControllerPassword.text.length == 0 ||
+        myControllerPassword.text.length < 5) {
+      setState(() {
+        resultLogin = "Password must not empty, and > 5 chars";
+      });
+      return;
+    }
+
+    // Step 2:
+    if (myControllerUsername.text == "admin" &&
+        myControllerPassword.text == "abc123") {
+      print("5Login succesful");
+      setState(() {
+        resultLogin = "Login succesful";
+      });
+      // Navigator to DashBoard screen
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const DashBoardScreen()),
+      );
+
+      /// END
+    } else {
+      // debug
+      print("6Wrong username or password");
+      setState(() {
+        resultLogin = "Wrong username or password";
+      });
+    }
+
+    //==> End of login
   }
 }
